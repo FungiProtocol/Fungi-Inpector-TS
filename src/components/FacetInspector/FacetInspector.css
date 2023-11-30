@@ -1,0 +1,52 @@
+.facet {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.function-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Adjust spacing between buttons */
+    margin-top: 10px;
+}
+
+.function-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.function-button:hover {
+    background-color: #45a049;
+}
+
+.facet-inspector-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
+    /* Adjust the space between the components */
+}
+
+.inspection-results,
+.function-caller-container {
+    flex: 1;
+}
+
+/* Ensure the content doesn't get too narrow on smaller screens */
+@media (max-width: 768px) {
+    .facet-inspector-container {
+        flex-direction: column;
+    }
+}

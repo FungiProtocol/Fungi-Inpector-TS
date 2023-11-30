@@ -1,0 +1,42 @@
+.function-caller {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.output-container {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    /* To preserve formatting and line breaks in JSON output */
+}
+
+.output-container.error {
+    border-color: #ff6b6b;
+    color: #d32f2f;
+}
+
+.input-field {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.function-call-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.function-call-button:hover {
+    background-color: #45a049;
+}

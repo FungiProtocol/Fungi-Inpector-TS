@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# Fungi-Inspector
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+Fungi-Inspector is a web-based tool designed for interacting with the Fungi Protocol, an innovative asset management protocol on the Ethereum blockchain. The Fungi Protocol leverages the ERC-2535 Diamond Standard to manage its core functionalities and interactions with various smart contracts known as 'Funds'. Fungi-Inspector provides a user-friendly interface to inspect and interact with these contracts, facilitating operations like token swapping and pricefeed consultations.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Wallet Connection**: Securely connect to Ethereum wallets using MetaMask for blockchain interactions.
+- **Diamond Contract Inspection**: View detailed information about the Fungi Protocol's diamond contract, including its facets and functionalities.
+- **Facet Interaction**: Interact with different facets of the diamond contract, each offering distinct functionalities like managing funds, token swapping, and accessing pricefeeds.
+- **Function Execution**: Execute functions within the facets with custom parameters and view real-time results.
+- **User-Friendly Interface**: A clean and intuitive interface designed for both beginners and experienced users in the Ethereum ecosystem.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
+- Node.js
+- npm or yarn
+- MetaMask browser extension installed and set up
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Installation
 
-### `npm test`
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/Fungi-Inspector.git
+   cd Fungi-Inspector
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+   or
+   ```bash
+   yarn install
+   ```
 
-### `npm run build`
+3. **Run the application:**
+   ```bash
+   npm start
+   ```
+   or
+   ```bash
+   yarn start
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Open the application:**
+   - Navigate to `http://localhost:3000` in your browser.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Connect Wallet**: Use the WalletConnect feature to link your Ethereum wallet.
+2. **Enter Diamond Address**: Input the address of the Fungi Protocol's diamond contract.
+3. **Inspect and Interact**: Browse through the facets of the diamond contract, execute functions, and view the results.
 
-### `npm run eject`
+## Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Contributions to Fungi-Inspector are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Acknowledgments
 
-## Learn More
+- Thanks to the Ethereum community for the continuous support and inspiration.
+- Special thanks to the creators and contributors of the ERC-2535 Diamond Standard.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Note:** Make sure to replace `https://github.com/your-username/Fungi-Inspector.git` with the actual URL of your repository. Also, if you have specific contributing guidelines and a license file, ensure that the links to `CONTRIBUTING.md` and `LICENSE.md` are accurate.
