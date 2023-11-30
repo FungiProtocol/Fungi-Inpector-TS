@@ -13,10 +13,10 @@ interface FunctionInput {
 interface FunctionCallerProps {
     abi: any; // Specify a more precise type if you have a defined ABI type
     functionName: string;
-    diamondAddress: string;
+    contractAddress: string;
 }
 
-const FunctionCaller: React.FC<FunctionCallerProps> = ({ abi, functionName, diamondAddress }) => {
+const FunctionCaller: React.FC<FunctionCallerProps> = ({ abi, functionName, contractAddress }) => {
     const [inputs, setInputs] = useState<FunctionInput[]>([]);
     const [output, setOutput] = useState<string>('');
 
@@ -43,7 +43,7 @@ const FunctionCaller: React.FC<FunctionCallerProps> = ({ abi, functionName, diam
         try {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const iface = new ethers.utils.Interface([abi]);
-            const contract = new ethers.Contract(diamondAddress, iface, provider.getSigner());
+            const contract = new ethers.Contract(contractAddress, iface, provider.getSigner());
 
             const args = inputs.map(input => input.value);
             let response = await contract[functionName](...args);

@@ -23,14 +23,16 @@ interface FacetInspectorProps {
 interface Abi {
     abi: Array<{
         type: string;
-        name: string;
+        name?: string;  // Make name optional
+        inputs?: Array<any>; // Add other optional properties as needed
+        stateMutability?: string;
     }>;
 }
 
 const FacetInspector: React.FC<FacetInspectorProps> = ({ diamondAddress, facets }) => {
     const abis: { [key: string]: Abi } = {
         IDiamondLoupe,
-        // FundFactory,
+        FundFactory,
         IDiamondCut,
         IOwnershipFacet,
         Pricefeed,
@@ -45,12 +47,32 @@ const FacetInspector: React.FC<FacetInspectorProps> = ({ diamondAddress, facets 
     const [selectedFunctionName, setSelectedFunctionName] = useState<string>('');
     const [selectedFunctionIndex, setSelectedFunctionIndex] = useState<number | null>(null);
     const [selectedAbi, setSelectedAbi] = useState<Abi | null>(null);
+    const [collapsedFacets, setCollapsedFacets] = useState<{ [key: string]: boolean }>(
+        Object.keys(abis).reduce((acc, key) => ({ ...acc, [key]: true }), {})
+    );
 
-    const handleFunctionSelect = (facetName: string, functionName: string, abi: Abi, index: number) => {
-        setSelectedFacet(facetName);
-        setSelectedFunctionName(functionName);
-        setSelectedFunctionIndex(index);
-        setSelectedAbi(abi);
+    const handleFunctionSelect = (
+        facetName: string,
+        functionName: string | undefined,
+        abi: Abi,
+        index: number
+    ) => {
+        if (functionName) {
+            setSelectedFacet(facetName);
+            setSelectedFunctionName(functionName);
+            setSelectedFunctionIndex(index);
+            setSelectedAbi(abi);
+        } else {
+            // Handle the case where functionName is undefined
+            console.error("Function name is undefined");
+        }
+    };
+
+    const toggleCollapse = (facetName: string) => {
+        setCollapsedFacets(prevState => ({
+            ...prevState,
+            [facetName]: !prevState[facetName],
+        }));
     };
 
     useEffect(() => {
@@ -67,32 +89,36 @@ const FacetInspector: React.FC<FacetInspectorProps> = ({ diamondAddress, facets 
     };
 
     return (
-        <div className="facet-inspector-container">
-            <div className="inspection-results">
-                <h3>Facets:</h3>
+        <div className="facet-inspector-wrapper" style={{ display: 'flex' }}>
+            <div className="facet-inspector-container">
                 {Object.entries(abis).map(([name, abi], idx) => {
-                    let facetAddress = handleFacetAddress(idx);
-
+                    const isCollapsed = collapsedFacets[name];
                     return (
-                        <div key={idx} className="facet">
-                            <p><strong>Facet Name:</strong> {name}</p>
-                            <p><strong>Facet Address:</strong> {facetAddress}</p>
-                            <div className="function-list">
-                                {abi.abi.map((fragment, index) => {
-                                    if (fragment.type === 'function') {
-                                        return (
-                                            <button
-                                                key={index}
-                                                className="function-button"
-                                                onClick={() => handleFunctionSelect(name, fragment.name, abi, index)}
-                                            >
-                                                {fragment.name}
-                                            </button>
-                                        );
-                                    }
-                                    return null;
-                                })}
+                        <div key={idx} className={`facet ${isCollapsed ? 'collapsed' : ''}`}>
+                            <div className="facet-name" onClick={() => toggleCollapse(name)}>
+                                {name}
                             </div>
+                            {!isCollapsed && (
+                                <div>
+                                    <p>Address: {handleFacetAddress(idx)}</p>
+                                    <div className="function-list">
+                                        {abi.abi.map((fragment, index) => {
+                                            if (fragment.type === 'function' && fragment.name) {
+                                                return (
+                                                    <button
+                                                        key={index}
+                                                        className="function-button"
+                                                        onClick={() => handleFunctionSelect(name, fragment.name, abi, index)}
+                                                    >
+                                                        {fragment.name}
+                                                    </button>
+                                                );
+                                            }
+                                            return null;
+                                        })}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     );
                 })}
@@ -102,12 +128,16 @@ const FacetInspector: React.FC<FacetInspectorProps> = ({ diamondAddress, facets 
                     <FunctionCaller
                         abi={selectedAbi?.abi[selectedFunctionIndex ?? 0]}
                         functionName={selectedFunctionName}
-                        diamondAddress={diamondAddress}
+                        contractAddress={diamondAddress}
                     />
                 </div>
             )}
         </div>
     );
+
+
+
+
 };
 
 export default FacetInspector;

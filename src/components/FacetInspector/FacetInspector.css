@@ -1,8 +1,59 @@
 .facet {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    width: 300px;
+    transition: all 0.3s ease;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
+    overflow: hidden;
+    /* transition: max-height 0.3s ease-in-out; */
+}
+
+.facet p {
+    margin: 0;
+    padding: 0;
+}
+
+.facet-name {
+    /* ... existing styles ... */
+    background-color: #333;
+    /* Give it a button-like color */
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+    /* Prevent text selection */
+}
+
+.facet-name:hover {
+    background-color: #444;
+    /* Slightly darker on hover */
+}
+
+.facet .facet-name::hover {
+    background-color: #f5f5f5;
+}
+
+.facet .facet-name::after {
+    content: '';
+    display: inline-block;
+    margin-left: 5px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.facet.collapsed {
+    max-height: 40px;
+    /* Adjust this value to the height of the .facet-name */
+}
+
+.facet.collapsed .facet-name::after {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
 }
 
 .function-list {
@@ -11,6 +62,8 @@
     gap: 10px;
     /* Adjust spacing between buttons */
     margin-top: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 .function-button {
@@ -31,8 +84,25 @@
     background-color: #45a049;
 }
 
-.facet-inspector-container {
+.facet-inspector-wrapper {
     display: flex;
+}
+
+
+.facet-inspector-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
+    /* Adjust the space between the components */
+}
+
+.function-caller-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: start;
     gap: 20px;

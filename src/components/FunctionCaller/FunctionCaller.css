@@ -4,17 +4,22 @@
 }
 
 .output-container {
+    width: 700px;
+    /* Fixed width */
+    max-height: 200px;
+    /* Maximum height before scrolling */
+    overflow-y: auto;
+    /* Allows vertical scrolling */
     margin-top: 10px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #030303;
     font-family: monospace;
     white-space: pre-wrap;
-    overflow-x: auto;
-    /* To preserve formatting and line breaks in JSON output */
+    /* Maintains text formatting */
 }
+
 
 .output-container.error {
     border-color: #ff6b6b;
@@ -26,7 +31,7 @@
     margin-bottom: 10px;
 }
 
-.function-call-button {
+/* .function-call-button {
     margin-top: 10px;
     padding: 8px 15px;
     background-color: #4CAF50;
@@ -35,7 +40,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
+} */
 
 .function-call-button:hover {
     background-color: #45a049;

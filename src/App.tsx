@@ -5,6 +5,7 @@ import WalletConnect from './components/WalletConnect/WalletConnect';
 import DiamondAddressInput from './components/DiamondAddressInput/DiamondAddressInput';
 import inspectDiamond from "./components/InspectDiamond/InspectDiamond";
 import { ethers } from "ethers";
+import FundInspector from './components/FundInspector/FundInspector';
 declare var window: any;
 // declare var ethers: any;
 
@@ -55,6 +56,7 @@ function App() {
         {diamondAddress && (
           <FacetInspector diamondAddress={diamondAddress} facets={inspectionResults} />
         )}
+        <FundInspector />
       </header>
       {error && <div className="error">{error}</div>}
     </div>
