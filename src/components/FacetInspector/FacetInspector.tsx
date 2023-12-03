@@ -7,6 +7,9 @@ import Pricefeed from '../../abi/Pricefeed.json';
 import GenericSwapFacet from '../../abi/GenericSwapFacet.json';
 import FunctionCaller from '../FunctionCaller/FunctionCaller';
 import './FacetInspector.css';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FaCopy } from 'react-icons/fa'; // Assuming you are using react-icons for icons
+
 
 // Define interfaces for props and state
 interface FacetInspectorProps {
@@ -88,11 +91,19 @@ const FacetInspector: React.FC<FacetInspectorProps> = ({ diamondAddress, facets 
         return 'Unknown Address';
     };
 
+    const [copied, setCopied] = useState(false);
+
+    const handleCopy = () => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000); // Reset copied state after 2 seconds
+    };
+
     return (
         <div className="facet-inspector-wrapper" style={{ display: 'flex' }}>
             <div className="facet-inspector-container">
                 {Object.entries(abis).map(([name, abi], idx) => {
                     const isCollapsed = collapsedFacets[name];
+                    const facetAddress = handleFacetAddress(idx);
                     return (
                         <div key={idx} className={`facet ${isCollapsed ? 'collapsed' : ''}`}>
                             <div className="facet-name" onClick={() => toggleCollapse(name)}>
@@ -100,7 +111,14 @@ const FacetInspector: React.FC<FacetInspectorProps> = ({ diamondAddress, facets 
                             </div>
                             {!isCollapsed && (
                                 <div>
-                                    <p>Address: {handleFacetAddress(idx)}</p>
+                                    <div className="facet-name" onClick={() => toggleCollapse(name)}>
+                                        {name}
+                                        <div className="facet-address">
+                                            <CopyToClipboard text={facetAddress} onCopy={handleCopy}>
+                                                <FaCopy className={`copy-icon ${copied ? 'copied' : ''}`} />
+                                            </CopyToClipboard>
+                                        </div>
+                                    </div>
                                     <div className="function-list">
                                         {abi.abi.map((fragment, index) => {
                                             if (fragment.type === 'function' && fragment.name) {

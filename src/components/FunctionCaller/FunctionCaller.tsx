@@ -60,22 +60,28 @@ const FunctionCaller: React.FC<FunctionCallerProps> = ({ abi, functionName, cont
     return (
         <div className="function-caller">
             <h3>Call Function: {functionName}</h3>
-            {inputs.map((input, index) => (
-                <input
-                    key={index}
-                    className="input-field"
-                    type="text"
-                    placeholder={`${input.name} (${input.type})`}
-                    value={input.value}
-                    onChange={e => handleInputChange(index, e.target.value)}
-                />
-            ))}
+            <div className="input-fields-container">
+                {inputs.map((input, index) => (
+                    <input
+                        key={index}
+                        className="input-field"
+                        style={{
+                            gridColumn: inputs.length === 1 ? 'span 3' : inputs.length === 2 ? 'span 1 / span 2' : 'auto'
+                        }}
+                        type="text"
+                        placeholder={`${input.name} (${input.type})`}
+                        value={input.value}
+                        onChange={e => handleInputChange(index, e.target.value)}
+                    />
+                ))}
+            </div>
             <button className="function-call-button" onClick={handleFunctionCall}>Call</button>
             <div className={`output-container ${output.startsWith('Error:') ? 'error' : ''}`}>
                 Output: {output}
             </div>
         </div>
     );
+
 };
 
 export default FunctionCaller;

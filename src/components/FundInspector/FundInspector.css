@@ -1,50 +1,101 @@
-.fund-inspector-container {
+.fund-inspector-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* Stack children vertically */
+    align-items: stretch;
+    /* Stretch children to match the parent's width */
+    gap: 20px;
+    /* Adjust the gap between the containers */
     margin: 20px;
-    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    /* background-color: #f9f9f9; */
+    width: 65%;
 }
 
+.fund-address-container input {
+    flex-grow: 1;
+    /* Allow input to grow and fill the space */
+    padding: 15px;
+    font-size: 16px;
+    /* Adjust font size if necessary */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    /* Ensure there is space between input and button */
+}
+
+.fund-address-container button {
+    padding: 15px 20px;
+    /* Provide sufficient padding */
+    font-size: 16px;
+    /* Adjust font size if necessary */
+    /* Limit the width of the button to the content */
+    white-space: nowrap;
+    /* Prevent the text inside the button from wrapping */
+}
+
+.function-button {
+    padding: 12px 15px;
+    /* Increase padding for a larger button */
+    font-size: 16px;
+    /* Increase font size for larger text */
+    /* Other styles remain the same */
+}
+
+.fund-address-container {
+    padding: 20px;
+    display: flex;
+    /* Use flex to layout input and button */
+    gap: 10px;
+    /* Add a gap between input and button */
+    align-items: center;
+    /* Align items vertically */
+    border-bottom: 1px solid #ddd;
+    /* Separate from the rest of the content */
+}
+
+/* The input container will now stretch the full width, no need to center it */
 .fund-address-input {
     margin-bottom: 20px;
-    width: 50%;
+    width: 100%;
+    /* max-width: 800px; */
 }
 
 .fund-address-input input {
     width: 100%;
-    padding: 8px 12px;
+    max-width: 800px;
+    /* Make the input field take up 100% of the container width */
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
-    line-height: 24px;
+}
+
+/* Align the function list and the function caller side by side */
+.fund-inspector-container {
+    display: flex;
+    flex-direction: row;
+    /* Place children in a row */
+    align-items: flex-start;
+    /* Align items to the start of the cross axis */
+    padding: 0;
+    /* Remove padding if the children will handle their own padding */
 }
 
 .function-list {
-    margin-bottom: 20px;
+    padding: 20px;
+    /* Add padding to match the design of the buttons */
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: 1px solid #ddd;
+    /* Separate the list from the function caller */
+    margin-bottom: 0;
+    /* Remove margin-bottom as it's no longer needed */
 }
 
-.function-button {
-    margin: 5px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    /* background-color: #007bff; */
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-/* .function-button:hover {
-    background-color: #0056b3;
-} */
 
 .function-caller-container {
-    margin-top: 20px;
     padding: 20px;
-    border: 1px solid #ddd;
     border-radius: 8px;
-    /* background-color: #fff; */
+    /* No border needed here, the function list border acts as the separator */
 }

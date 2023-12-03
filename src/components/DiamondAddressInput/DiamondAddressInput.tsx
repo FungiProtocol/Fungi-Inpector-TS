@@ -6,7 +6,7 @@ interface DiamondAddressInputProps {
 }
 
 const DiamondAddressInput: React.FC<DiamondAddressInputProps> = ({ onAddressSubmit }) => {
-    const [address, setAddress] = useState<string>('0x4f1F87d512650f32bf9949C4c5Ef37a3cc891C6D');
+    const [address, setAddress] = useState<string>('0xf274De14171Ab928A5Ec19928cE35FaD91a42B64');
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

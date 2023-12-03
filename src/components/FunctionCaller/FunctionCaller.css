@@ -1,47 +1,76 @@
 .function-caller {
-    margin-top: 20px;
-    padding: 10px;
+    background: #1c1e24;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 760px;
+    padding: 20px;
+    margin: 20px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.output-container {
-    width: 700px;
-    /* Fixed width */
-    max-height: 200px;
-    /* Maximum height before scrolling */
-    overflow-y: auto;
-    /* Allows vertical scrolling */
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #030303;
-    font-family: monospace;
-    white-space: pre-wrap;
-    /* Maintains text formatting */
+.function-caller h3 {
+    font-size: 1.2em;
+    margin-bottom: 1em;
 }
 
-
-.output-container.error {
-    border-color: #ff6b6b;
-    color: #d32f2f;
+.input-fields-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .input-field {
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-/* .function-call-button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: #4CAF50;
-    color: white;
+    background: #2c2f36;
     border: none;
     border-radius: 4px;
+    color: #fff;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.function-call-button {
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
-} */
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
 
 .function-call-button:hover {
     background-color: #45a049;
+}
+
+.output-container {
+    background: #2c2f36;
+    border-radius: 4px;
+    margin-top: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 150px;
+    white-space: pre-wrap;
+}
+
+.output-container.error {
+    background-color: #ff6b6b;
+    color: #fff;
+}
+
+/* Add this to hide the scrollbar but allow scrolling */
+.output-container::-webkit-scrollbar {
+    display: none;
+}
+
+.output-container {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }

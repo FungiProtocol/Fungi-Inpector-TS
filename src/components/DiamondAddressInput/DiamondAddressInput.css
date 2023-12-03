@@ -1,21 +1,46 @@
 form {
+    display: flex;
+    /* Use flexbox for layout */
+    align-items: center;
+    /* Align the items vertically */
+    justify-content: flex-start;
+    /* Align the items to the start of the container */
     margin-top: 20px;
+    gap: 10px;
+    /* Add a gap between the input and the button */
+    width: 63%;
+    padding-bottom: 15px;
 }
 
 input[type="text"] {
-    margin-right: 10px;
-    padding: 8px;
+    flex-grow: 1;
+    /* Allow the input to fill the available space */
+    padding: 15px;
+    /* Increase padding for a larger height */
+    font-size: 16px;
+    /* Increase font size for better readability */
+    border: 1px solid #ccc;
+    /* Style the border to match the 'Inspect Fund' input */
+    border-radius: 4px;
+    /* Match the border-radius */
 }
 
 button {
-    padding: 8px;
+    padding: 15px 20px;
+    /* Adjust padding to match the 'Inspect Fund' button */
     background-color: #4CAF50;
+    /* You might want to keep this color */
     color: white;
+    /* Text color */
     border: none;
+    /* No border */
     border-radius: 4px;
+    /* Match the border-radius */
     cursor: pointer;
+    /* Add any additional styles to match the 'Inspect Fund' button */
 }
 
 button:hover {
     background-color: #45a049;
+    /* Slightly darker green on hover */
 }
