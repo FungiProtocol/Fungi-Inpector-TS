@@ -12,3 +12,7 @@
   font-size: calc(3px + 2vmin);
   color: white;
 }
+
+h1 {
+  position: relative;
+}

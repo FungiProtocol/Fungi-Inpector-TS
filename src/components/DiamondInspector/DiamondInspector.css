@@ -1,0 +1,50 @@
+/* DiamondInspector.css */
+.diamond-inspector-container {
+    /* position: absolute; */
+    /* top: 50px; */
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Rest of the styling for the component */
+.input-form {
+    margin: 0 auto;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* .input-form input {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+} */
+
+/* .input-form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+} */
+
+.input-form button:hover {
+    background-color: #45a049;
+}
+
+/* Styles for the error message */
+.error-message {
+    color: #e74c3c;
+    /* Red color for errors */
+    text-align: center;
+    /* margin-top: 10px; */
+}
+
+/* Styles for the results section */
+/* .results-section {
+    margin-top: 5px;
+} */

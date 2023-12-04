@@ -106,35 +106,34 @@ const FacetInspector: React.FC<FacetInspectorProps> = ({ diamondAddress, facets 
                     const facetAddress = handleFacetAddress(idx);
                     return (
                         <div key={idx} className={`facet ${isCollapsed ? 'collapsed' : ''}`}>
-                            <div className="facet-name" onClick={() => toggleCollapse(name)}>
-                                {name}
+                            <div className="facet-header">
+                                <div className="facet-name" onClick={() => toggleCollapse(name)}>
+                                    {name}
+                                </div>
+                                {/* The CopyToClipboard icon should be outside the toggle collapse click area */}
+                                <CopyToClipboard text={facetAddress} onCopy={handleCopy}>
+                                    <div>
+                                        <FaCopy className={`copy-icon ${copied ? 'copied' : ''}`} />
+                                        {copied && <span className="tooltip">Copied!</span>}
+                                    </div>
+                                </CopyToClipboard>
                             </div>
                             {!isCollapsed && (
-                                <div>
-                                    <div className="facet-name" onClick={() => toggleCollapse(name)}>
-                                        {name}
-                                        <div className="facet-address">
-                                            <CopyToClipboard text={facetAddress} onCopy={handleCopy}>
-                                                <FaCopy className={`copy-icon ${copied ? 'copied' : ''}`} />
-                                            </CopyToClipboard>
-                                        </div>
-                                    </div>
-                                    <div className="function-list">
-                                        {abi.abi.map((fragment, index) => {
-                                            if (fragment.type === 'function' && fragment.name) {
-                                                return (
-                                                    <button
-                                                        key={index}
-                                                        className="function-button"
-                                                        onClick={() => handleFunctionSelect(name, fragment.name, abi, index)}
-                                                    >
-                                                        {fragment.name}
-                                                    </button>
-                                                );
-                                            }
-                                            return null;
-                                        })}
-                                    </div>
+                                <div className="function-list">
+                                    {abi.abi.map((fragment, index) => {
+                                        if (fragment.type === 'function' && fragment.name) {
+                                            return (
+                                                <button
+                                                    key={index}
+                                                    className="function-button"
+                                                    onClick={() => handleFunctionSelect(name, fragment.name, abi, index)}
+                                                >
+                                                    {fragment.name}
+                                                </button>
+                                            );
+                                        }
+                                        return null;
+                                    })}
                                 </div>
                             )}
                         </div>
@@ -151,6 +150,7 @@ const FacetInspector: React.FC<FacetInspectorProps> = ({ diamondAddress, facets 
                 </div>
             )}
         </div>
+
     );
 
 

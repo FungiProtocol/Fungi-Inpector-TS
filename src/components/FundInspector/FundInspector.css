@@ -1,4 +1,5 @@
 .fund-inspector-wrapper {
+    /* position: fixed; */
     display: flex;
     flex-direction: column;
     /* Stack children vertically */
@@ -6,10 +7,11 @@
     /* Stretch children to match the parent's width */
     gap: 20px;
     /* Adjust the gap between the containers */
-    margin: 20px;
+    /* margin-top: 800px; */
     border: 1px solid #ddd;
     border-radius: 8px;
     width: 65%;
+    /* top: 100px; */
 }
 
 .fund-address-container input {
@@ -98,4 +100,10 @@
     padding: 20px;
     border-radius: 8px;
     /* No border needed here, the function list border acts as the separator */
+}
+
+.results-section {
+    /* This padding should be at least equal to the height of the DiamondInspector to push the content down */
+    padding-top: 80px;
+    /* Adjust this value based on the actual height of the DiamondInspector */
 }

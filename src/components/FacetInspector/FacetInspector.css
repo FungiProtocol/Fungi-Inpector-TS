@@ -2,12 +2,18 @@
     margin-bottom: 10px;
     width: 300px;
     transition: all 0.3s ease;
-    padding: 10px;
+    /* padding: 10px; */
     /* border: 1px solid #ddd; */
     border-radius: 5px;
     border: none;
     overflow: hidden;
     /* transition: max-height 0.3s ease-in-out; */
+}
+
+.facet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .facet p {
@@ -50,25 +56,25 @@
     background-color: #f5f5f5;
 }
 
+
 .facet .facet-name::after {
     content: '';
     display: inline-block;
-    margin-left: 5px;
-    border: solid black;
+    margin-left: 7px;
+    border: solid rgb(255, 255, 255);
     border-width: 0 2px 2px 0;
     padding: 3px;
     transform: rotate(45deg);
+    right: 10px;
     -webkit-transform: rotate(45deg);
 }
 
 .collapsed .facet-name::after {
     transform: rotate(90deg);
-    /* Adjust the rotation angle as needed */
 }
 
 .facet.collapsed {
     max-height: 40px;
-    /* Adjust this value to the height of the .facet-name */
 }
 
 .facet.collapsed .facet-name::after {
@@ -82,7 +88,7 @@
     flex-direction: column;
     gap: 10px;
     /* Adjust spacing between buttons */
-    margin-top: 10px;
+    /* margin-top: 10px; */
     margin-right: 5px;
     margin-bottom: 5px;
 }
@@ -134,7 +140,7 @@
 }
 
 .function-caller-container {
-    padding-top: 20px;
+    /* padding-top: 20px; */
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -156,4 +162,52 @@
     .facet-inspector-container {
         flex-direction: column;
     }
+}
+
+.copy-icon {
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    /* Smooth transition for color change */
+}
+
+.copy-icon:hover {
+    color: #4CAF50;
+    /* Change color on hover */
+}
+
+.copy-icon.copied {
+    color: #4CAF50;
+    /* Change color when copied */
+}
+
+/* Tooltip styling */
+.tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    /* Use half of the width value */
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.copy-icon:hover .tooltip {
+    visibility: visible;
 }
